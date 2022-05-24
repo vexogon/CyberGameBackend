@@ -2,9 +2,10 @@ dev\kanto\CyberGame\controllers\QuestionControl.class
 dev\kanto\CyberGame\CyberGameApplication.class
 dev\kanto\CyberGame\model\Light.class
 dev\kanto\CyberGame\Repositories\AnswerRepository.class
-dev\kanto\CyberGame\controllers\LightControl.class
 dev\kanto\CyberGame\controllers\AnswerControl.class
 dev\kanto\CyberGame\Repositories\LightRepository.class
 dev\kanto\CyberGame\model\Answer.class
 dev\kanto\CyberGame\Repositories\QuestionRepository.class
 dev\kanto\CyberGame\model\Question.class
+dev\kanto\CyberGame\controllers\LightAnswerControl.class
+dev\kanto\CyberGame\controllers\LightProgressControl.class
