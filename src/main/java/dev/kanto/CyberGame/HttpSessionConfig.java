@@ -6,6 +6,7 @@ import org.springframework.session.data.mongo.config.annotation.web.http.EnableM
 
 import java.time.Duration;
 
+
 @EnableMongoHttpSession
 public class HttpSessionConfig {
 

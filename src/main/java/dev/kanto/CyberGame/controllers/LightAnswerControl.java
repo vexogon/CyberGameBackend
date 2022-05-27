@@ -18,7 +18,7 @@ public class LightAnswerControl {
     }
     @GetMapping("/LightAnswer/")
     @ResponseBody
-    @CrossOrigin(origins = "http://192.168.240.3:3001")
+    @CrossOrigin(origins = "http://65.21.234.182:3001")
     public String LightQuestion(@RequestParam String id) {
         Answer answer = AnswerRepository.findAnswerByid(id);
 

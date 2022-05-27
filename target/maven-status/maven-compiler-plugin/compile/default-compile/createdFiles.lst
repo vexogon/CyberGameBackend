@@ -8,4 +8,8 @@ dev\kanto\CyberGame\model\Answer.class
 dev\kanto\CyberGame\Repositories\QuestionRepository.class
 dev\kanto\CyberGame\model\Question.class
 dev\kanto\CyberGame\controllers\LightAnswerControl.class
+dev\kanto\CyberGame\model\Player.class
 dev\kanto\CyberGame\controllers\LightProgressControl.class
+dev\kanto\CyberGame\controllers\SessionControl.class
+dev\kanto\CyberGame\HttpSessionConfig.class
+dev\kanto\CyberGame\Repositories\PlayerRepository.class
