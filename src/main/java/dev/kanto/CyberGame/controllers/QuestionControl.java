@@ -28,14 +28,16 @@ public class QuestionControl {
     @GetMapping("/GetQuestion/")
     @ResponseBody
     @CrossOrigin(origins = "http://65.21.234.182:3000")
-    public Exception GetQuestion(@RequestParam String id) {
+    public Question GetQuestion(@RequestParam String id) {
         System.out.println("Getting Question by id: " + id);
         Question question = Questionrepository.findQuestionByid(id);
         System.out.println(question.getLfc());
         if(!Objects.equals(question.getLfc(), "null")) {
-            return CreateWebClient(question.getLfc());
+            CreateWebClient(question.getLfc());
+            return question;
         }
-        return null;
+        return question;
+
     }
     private Exception CreateWebClient(String color) {
         String request;
