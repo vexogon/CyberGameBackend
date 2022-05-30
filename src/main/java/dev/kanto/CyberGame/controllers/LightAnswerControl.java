@@ -2,8 +2,11 @@ package dev.kanto.CyberGame.controllers;
 
 import dev.kanto.CyberGame.Repositories.AnswerRepository;
 import dev.kanto.CyberGame.model.Answer;
+import net.minidev.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Objects;
@@ -23,24 +26,24 @@ public class LightAnswerControl {
         Answer answer = AnswerRepository.findAnswerByid(id);
 
         if(!Objects.equals(answer.getLightURL(), "null")) {
+            System.out.println("Lights Engaged - Answer");
             return CreateWebClient(answer.getLightURL());
-
         }
         return null;
     }
     private String CreateWebClient(String URL) {
+        JSONObject obj = new JSONObject();
+        obj.put("cycles", 3);
+        obj.put("period", 2);
+        obj.put("color", "green");
         WebClient client = WebClient.create();
-        String Colour = """
-                cycles=5
-                period=2
-                color=green""";
-        WebClient.ResponseSpec responseSpec = client.post()
+        ClientResponse responseSpec = client.post()
                 .uri(URL)
-                .header("Authorization", "Bearer: cf2043521b1afba29bb87603bc695ea519722101cf8c3e597d41779a4a430ae0")
-                .contentType(MediaType.TEXT_PLAIN)
-                .bodyValue(Colour)
-                .retrieve();
-        String responseBody = responseSpec.bodyToMono(String.class).block();
-        return responseBody;
+                .header("Authorization", "Bearer cd37b758938e9e0cdaffec6be56a6fb9c894480cac9cb341b5f55b51efc937ca")
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromObject(obj))
+                .exchange()
+                .block();
+        return null;
     }
 }

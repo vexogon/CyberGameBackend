@@ -7,10 +7,12 @@ import dev.kanto.CyberGame.Repositories.AnswerRepository;
 import dev.kanto.CyberGame.Repositories.QuestionRepository;
 import dev.kanto.CyberGame.model.Answer;
 import dev.kanto.CyberGame.model.Question;
-import org.springframework.http.HttpStatus;
+import net.minidev.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 
 
@@ -26,45 +28,46 @@ public class QuestionControl {
     @GetMapping("/GetQuestion/")
     @ResponseBody
     @CrossOrigin(origins = "http://65.21.234.182:3000")
-    public Question GetQuestion(@RequestParam String id) {
+    public Exception GetQuestion(@RequestParam String id) {
         System.out.println("Getting Question by id: " + id);
         Question question = Questionrepository.findQuestionByid(id);
         System.out.println(question.getLfc());
         if(!Objects.equals(question.getLfc(), "null")) {
-            CreateWebClient(question.getLfc());
+            return CreateWebClient(question.getLfc());
         }
-        return question;
+        return null;
     }
-    private String CreateWebClient(String color) {
+    private Exception CreateWebClient(String color) {
         String request;
         WebClient client = WebClient.create();
-        if(color == "red") {
-             request = """
-                cycles=5
-                period=2
-                color="red""";
+        JSONObject obj = new JSONObject();
+        obj.put("cycles", 3);
+        obj.put("period", 2);
+
+        if(Objects.equals(color, "red")) {
+            obj.put("color", "red");
+
 
         }
         else {
-             request = """
-                    cycles=5
-                    period=2
-                    color="green""";
+            obj.put("color", "green");
         }
         try {
-            WebClient.ResponseSpec responseSpec = client.post()
+
+            ClientResponse responseSpec = client.post()
                     .uri("https://api.lifx.com/v1/lights/all/effects/pulse")
-                    .header("Authorization", "Bearer: cf2043521b1afba29bb87603bc695ea519722101cf8c3e597d41779a4a430ae0")
-                    .contentType(MediaType.TEXT_PLAIN)
-                    .bodyValue(request)
-                    .retrieve();
-            String responseBody = responseSpec.bodyToMono(String.class).block();
-            return responseBody;
-        }
-        catch(Exception e) {
+                    .header("Authorization", "Bearer cd37b758938e9e0cdaffec6be56a6fb9c894480cac9cb341b5f55b51efc937ca")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(BodyInserters.fromObject(obj))
+                    .exchange()
+                    .block();
             return null;
         }
+        catch(Exception e) {
+            return e;
+        }
     }
+
 
     @PostMapping("/CreateQuestion/")
     @CrossOrigin(origins = "http://65.21.234.182:3000")
