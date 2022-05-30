@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: dev.kanto.CyberGame.CyberGameApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.978 s - in dev.kanto.CyberGame.CyberGameApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.015 s - in dev.kanto.CyberGame.CyberGameApplicationTests

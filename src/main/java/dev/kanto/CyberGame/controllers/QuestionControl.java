@@ -41,8 +41,8 @@ public class QuestionControl {
         String request;
         WebClient client = WebClient.create();
         JSONObject obj = new JSONObject();
-        obj.put("cycles", 3);
-        obj.put("period", 2);
+        obj.put("cycles", 5);
+        obj.put("period", 0.8);
 
         if(Objects.equals(color, "red")) {
             obj.put("color", "red");

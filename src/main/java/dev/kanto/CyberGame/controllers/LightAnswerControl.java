@@ -33,8 +33,8 @@ public class LightAnswerControl {
     }
     private String CreateWebClient(String URL) {
         JSONObject obj = new JSONObject();
-        obj.put("cycles", 3);
-        obj.put("period", 2);
+        obj.put("cycles", 5);
+        obj.put("period", 0.8);
         obj.put("color", "green");
         WebClient client = WebClient.create();
         ClientResponse responseSpec = client.post()
