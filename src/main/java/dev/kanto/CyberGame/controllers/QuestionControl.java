@@ -27,7 +27,7 @@ public class QuestionControl {
     }
     @GetMapping("/GetQuestion/")
     @ResponseBody
-    @CrossOrigin(origins = "http://65.21.234.182:3000")
+    @CrossOrigin(origins = "http://127.0.0.1:3000")
     public Question GetQuestion(@RequestParam String id) {
         System.out.println("Getting Question by id: " + id);
         Question question = Questionrepository.findQuestionByid(id);
@@ -72,7 +72,7 @@ public class QuestionControl {
 
 
     @PostMapping("/CreateQuestion/")
-    @CrossOrigin(origins = "http://65.21.234.182:3000")
+    @CrossOrigin(origins = "http://127.0.0.1:3000")
     public ResponseEntity CreateQuestion(@RequestBody Question question) {
          List<String> answerIds = new ArrayList<>();
         try {

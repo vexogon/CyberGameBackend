@@ -21,13 +21,16 @@ public class LightAnswerControl {
     }
     @GetMapping("/LightAnswer/")
     @ResponseBody
-    @CrossOrigin(origins = "http://65.21.234.182:3000")
+    @CrossOrigin(origins = "http://127.0.0.1:3000")
     public String LightQuestion(@RequestParam String id) {
         Answer answer = AnswerRepository.findAnswerByid(id);
+        System.out.println("Running");
 
         if(!Objects.equals(answer.getLightURL(), "null")) {
             System.out.println("Lights Engaged - Answer");
+            System.out.println(answer.getLightURL());
             return CreateWebClient(answer.getLightURL());
+
         }
         return null;
     }
@@ -44,6 +47,7 @@ public class LightAnswerControl {
                 .body(BodyInserters.fromObject(obj))
                 .exchange()
                 .block();
-        return null;
+        System.out.println(responseSpec);
+        return "Light on";
     }
 }
