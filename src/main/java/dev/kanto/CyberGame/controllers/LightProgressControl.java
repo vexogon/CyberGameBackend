@@ -18,7 +18,7 @@ public class LightProgressControl {
 
     @GetMapping("/LightByProgress/")
     @ResponseBody
-    @CrossOrigin(origins = "http://13.40.117.145:3000/")
+    @CrossOrigin(origins = "http://18.132.249.70:3000/")
     public String getChangeLight(@RequestParam String id, @RequestParam int tp) {
         Light Light = LightRepository.findLightByid(id);
         if (Light.getTriggerOne() == tp) {
@@ -43,7 +43,7 @@ public class LightProgressControl {
     }
 
     @PostMapping("/postLight/")
-    @CrossOrigin(origins = "http://13.40.117.145:3000/")
+    @CrossOrigin(origins = "http://18.132.249.70:3000/")
     public Light CreateQuestion(@RequestBody Light light) {
         Light saved = LightRepository.save(light);
         return saved;

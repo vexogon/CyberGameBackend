@@ -18,7 +18,7 @@ public class SessionControl {
     }
 
     @GetMapping("/SessionStart/")
-    @CrossOrigin(origins = "http://13.40.117.145:3000/")
+    @CrossOrigin(origins = "http://18.132.249.70:3000/")
     public ResponseEntity Timing(HttpSession session) {
         LocalDateTime date = LocalDateTime.now();
         int seconds = date.toLocalTime().toSecondOfDay();
@@ -38,7 +38,7 @@ public class SessionControl {
         return ResponseEntity.ok(Time);
     }
 
-    @CrossOrigin(origins = "http://13.40.117.145:3000/")
+    @CrossOrigin(origins = "http://18.132.249.70:3000/")
     public Player SessionStop(HttpSession session, @RequestParam String username) {
 
         LocalDateTime date = LocalDateTime.now();

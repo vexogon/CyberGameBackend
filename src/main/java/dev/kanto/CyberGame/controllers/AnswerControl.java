@@ -14,7 +14,7 @@ public class AnswerControl {
     }
     @GetMapping("/GetAnswer/")
     @ResponseBody
-    @CrossOrigin(origins = "http://13.40.117.145:3000/")
+    @CrossOrigin(origins = "http://18.132.249.70:3000/")
     public Answer GetAnswer(@RequestParam String id) {
         System.out.println("Getting Answer by id: " + id);
         Answer answer = AnswerRepository.findAnswerByid(id);
