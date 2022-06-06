@@ -21,7 +21,7 @@ public class LightAnswerControl {
     }
     @GetMapping("/LightAnswer/")
     @ResponseBody
-    @CrossOrigin(origins = "http://13.40.172.214:3000/")
+    @CrossOrigin(origins = "http://13.40.117.145:3000/")
     public String LightQuestion(@RequestParam String id) {
         Answer answer = AnswerRepository.findAnswerByid(id);
         System.out.println("Running");
@@ -42,7 +42,7 @@ public class LightAnswerControl {
         WebClient client = WebClient.create();
         ClientResponse responseSpec = client.post()
                 .uri(URL)
-                .header("Authorization", "Bearer cd37b758938e9e0cdaffec6be56a6fb9c894480cac9cb341b5f55b51efc937ca")
+                .header("Authorization", "Bearer c840946f1b4728f0e9efba9f2cb0c7738965bfe475b59d8015940df8a1956495")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromObject(obj))
                 .exchange()

@@ -27,7 +27,7 @@ public class QuestionControl {
     }
     @GetMapping("/GetQuestion/")
     @ResponseBody
-    @CrossOrigin(origins = "http://13.40.172.214:3000/")
+    @CrossOrigin(origins = "http://13.40.117.145:3000/")
     public Question GetQuestion(@RequestParam String id) {
         System.out.println("Getting Question by id: " + id);
         Question question = Questionrepository.findQuestionByid(id);
@@ -58,7 +58,7 @@ public class QuestionControl {
 
             ClientResponse responseSpec = client.post()
                     .uri("https://api.lifx.com/v1/lights/all/effects/pulse")
-                    .header("Authorization", "Bearer cd37b758938e9e0cdaffec6be56a6fb9c894480cac9cb341b5f55b51efc937ca")
+                    .header("Authorization", "Bearer c840946f1b4728f0e9efba9f2cb0c7738965bfe475b59d8015940df8a1956495")
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(BodyInserters.fromObject(obj))
                     .exchange()
@@ -72,7 +72,7 @@ public class QuestionControl {
 
 
     @PostMapping("/CreateQuestion/")
-    @CrossOrigin(origins = "http://13.40.172.214:3000/")
+    @CrossOrigin(origins = "http://13.40.117.145:3000/")
     public ResponseEntity CreateQuestion(@RequestBody Question question) {
          List<String> answerIds = new ArrayList<>();
         try {
